@@ -1,0 +1,672 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wangbao</title>
+    <link rel="" href="style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+        
+        :root{
+         --orange:#ffa500;
+        }
+        
+        *{
+         font-family: 'Nunito', sans-serif;
+         margin:0; padding:0;
+         box-sizing: border-box;
+         text-transform: capitalize;
+         outline: none; border:none;
+         text-decoration: none;
+         transition: all .2s linear;
+        }
+        
+        *::selection{
+         background:var(--orange);
+         color:#fff;
+        }
+        
+        html{
+         font-size: 62.5%;
+         overflow-x: hidden;
+        }
+        
+        section{
+         padding:2rem 9%;
+        }
+        
+        .heading{
+         text-align: center;
+         padding:2.5rem 0
+        }
+        
+        .heading span{
+         font-size: 3.5rem;
+         background:rgba(255, 165, 0,.2);
+         color:var(--orange);
+         border-radius: .5rem;
+         padding:.2rem 1rem;
+        }
+        
+        .heading span.space{
+         background:none;
+        }
+        
+        .btn{
+         display: inline-block;
+         margin-top: 1rem;
+         background:var(--orange);
+         color:#fff;
+         padding:.8rem 3rem;
+         border:.2rem solid var(--orange);
+         cursor: pointer;
+         font-size: 1.7rem;
+        }
+        
+        .btn:hover{
+         background:rgba(255, 165, 0,.2);
+         color:var(--orange);
+        }
+        
+        header{
+         position: fixed;
+         top:0; left: 0; right:0;
+         background:#333;
+         z-index: 1000;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding:2rem 9%;
+        }
+        
+        header .logo{
+         font-size: 2.5rem;
+         font-weight: bolder;
+         color:#fff;
+         text-transform: uppercase;
+        }
+        
+        header .logo span{
+         color:var(--orange);
+        }
+        
+        header .navbar a{
+         color:#fff;
+         font-size: 2rem;
+         margin:0 .8rem;
+        }
+        
+        header .navbar a:hover{
+         color:var(--orange);
+        }
+        
+        #menu-bar{
+         color:#fff;
+         border:.1rem solid #fff;
+         border-radius: .5rem;
+         font-size: 3rem;
+         padding:.5rem 1.2rem;
+         cursor: pointer;
+         display: none;
+        }
+        
+        .home{
+         min-height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-flow: column;
+         position: relative;
+         z-index: 0;
+        }
+        
+        .home .content{
+         text-align: center;
+        }
+        
+        .home .content h3{
+         font-size: 4.5rem;
+         color:#fff;
+         text-transform: uppercase;
+         text-shadow: 0 .3rem .5rem rgba(0,0,0,.1);
+        }
+        
+        .home .content p{
+         font-size: 2.5rem;
+         color:#fff;
+         padding:.5rem 0;
+        }
+        
+        .home .video-container video{
+         position: absolute;
+         top:0; left: 0;
+         z-index: -1;
+         height: 100%;
+         width:100%;
+         object-fit: cover;
+        }
+        
+        .home .controls{
+         padding:1rem;
+         border-radius: 5rem;
+         background:rgba(0,0,0,.7);
+         position: relative;
+         top:10rem;
+        }
+        
+        .home .controls .vid-btn{
+         height:2rem;
+         width:2rem;
+         display: inline-block;
+         border-radius: 50%;
+         background:#fff;
+         cursor: pointer;
+         margin:0 .5rem;
+        }
+        
+        .home .controls .vid-btn.active{
+         background:var(--orange);
+        }
+        
+        .gastanks .box-container{
+         display: flex;
+         flex-wrap: wrap;
+         gap:1.5rem;
+        
+        }
+        
+        .gastanks .box-container .box{
+         flex:1 1 30rem;
+         border-radius: .5rem;
+         overflow: hidden;
+         box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+        }
+        
+        .gastanks .box-container .box img{
+         height: 25rem;
+         width:100%;
+         object-fit: cover;
+        }
+        
+        .gastanks .box-container .box .content{
+         padding:2rem;
+        }
+        
+        .gastanks .box-container .box .content h3{
+         font-size:2rem;
+         color:#333;
+        }
+        
+        .gastanks .box-container .box .content h3 i{
+         color:var(--orange);
+        }
+        
+        .gastanks .box-container .box .content p{
+         font-size:1.7rem;
+         color:#666;
+         padding:1rem 0;
+        }
+        
+        .gastanks .box-container .box .content .price{
+         font-size: 2rem;
+         color:#333;
+         padding-top: 1rem;
+        }
+        
+        .gastanks .box-container .box .content .price span{
+         color:#666;
+         font-size: 1.5rem;
+         text-decoration: line-through;
+        }
+        
+        .sayings .box-container{
+         display: flex;
+         flex-wrap: wrap;
+         gap:1.5rem;
+        
+        }
+        
+        .sayings .box-container .box{
+         flex: 1 1 30rem;
+         border-radius: .5rem;
+         padding:1rem;
+         text-align: center;
+        }
+        
+        .sayings .box-container .box i{
+         padding:1rem;
+         font-size: 5rem;
+         color:var(--orange);
+        }
+        
+        .sayings .box-container .box h3{
+         font-size: 2.5rem;
+         color:#333;
+        }
+        
+        .sayings .box-container .box p{
+         font-size: 1.5rem;
+         color:#666;
+         padding:1rem 0;
+        }
+        
+        .sayings .box-container .box:hover{
+         box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+        }
+        
+        .gallery .box-container{
+         display: flex;
+         flex-wrap: wrap;
+         gap:2.5rem；
+        }
+        
+        .galas .box-container .box{
+         overflow: hidden;
+         box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+         border:1rem solid #fff;
+         border-radius: .5rem;
+         flex:1 1 30rem;
+         height: 25rem;
+         position: relative;
+        }
+        
+        .galas .box-container .box img{
+         height: 100%;
+         width:100%;
+         object-fit: cover;
+        }
+        
+        .galas .box-container .box .content{
+         position: absolute;
+         top:-100%; left:0;
+         height: 100%;
+         width:100%;
+         text-align: center;
+         background:rgba(0,0,0,.7);
+         padding:2rem;
+         padding-top: 5rem;
+        }
+        
+        .galas .box-container .box:hover .content{
+         top:0;
+        }
+        
+        .galas .box-container .box .content h3{
+         font-size: 2.5rem;
+         color:var(--orange);
+        }
+        
+        .galas .box-container .box .content p{
+         font-size: 1.5rem;
+         color:#eee;
+         padding:.5rem 0;
+        }
+        
+        
+        .footer{
+         background:#333;
+        }
+        
+        .footer .box-container{
+         display: flex;
+         flex-wrap: wrap;
+         gap:1.5rem;
+        }
+        
+        .footer .box-container .box{
+         padding:1rem 0;
+         flex:1 1 25rem;
+        }
+        
+        .footer .box-container .box h3{
+         font-size: 2.5rem;
+         padding:.7rem 0;
+         color:#fff;
+        }
+        
+        .footer .box-container .box p{
+         font-size: 1.5rem;
+         padding:.7rem 0;
+         color:#eee;
+        }
+        
+        .footer .box-container .box a{
+         display: block;
+         font-size: 1.5rem;
+         padding:.7rem 0;
+         color:#eee;
+        }
+        
+        .footer .box-container .box a:hover{
+         color:var(--orange);
+         text-decoration: underline;
+        }
+        
+        .footer .credit{
+         text-align: center;
+         padding:2rem 1rem;
+         margin-top: 1rem;
+         font-size: 2rem;
+         font-weight: normal;
+         color:#fff;
+         border-top: .1rem solid rgba(255,255,255,.2);
+        }
+        
+        .footer .credit span{
+         color:var(--orange);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* media queries  */
+        
+        @media (max-width:1200px){
+        
+         html{
+           font-size: 55%;
+         }
+        
+        }
+        
+        @media (max-width:991px){
+        
+         header{
+           padding:2rem;
+         }
+        
+         section{
+           padding:2rem;
+         }
+        
+        }
+        
+        @media (max-width:768px){
+        
+         #menu-bar{
+           display: initial;
+         }
+        
+         header .navbar{
+           position: absolute;
+           top:100%; right:0; left: 0;
+           background: #333;
+           border-top: .1rem solid rgba(255,255,255,.2);
+           padding:1rem 2rem;
+           clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+         }
+        
+         header .navbar.active{
+           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+         }
+        
+         header .navbar a{
+           display: block;
+           border-radius: .5rem;
+           padding:1.5rem;
+           margin:1.5rem 0;    
+           background:#222;
+         }
+        
+        }
+        
+        @media (max-width:450px){
+        
+         html{
+           font-size: 50%;
+         }
+        
+         .heading span{
+           font-size: 2.5rem;
+         }
+        
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="#" class="logo"><span>W</span>angbao</a>
+        <nav class="navbar">
+            <a href="#">home</a>
+            <a href="#">test</a>
+            <a href="#">test</a>
+            <a href="#">test</a>
+            <a href="#">test</a>
+            <a href="#">test</a>
+            <a href="#">test</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="content">
+            <h3>王爆煤气罐</h3>
+            <p></p>
+            <a href="#" class="btn">click to boom</a>
+        </div>
+        <div>
+            <video src="#.mp4" loop="" autoplay="" muted=""></video>
+        </div>
+    </section>
+    <section>
+        <h1 class="heading">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>m</span>
+            <span class="space"></span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+        </h1>
+    </section>
+    <section class="gastanks">
+        <h1 class="heading">
+            <span>g</span>
+            <span>a</span>
+            <span>s</span>
+            <span>t</span>
+            <span>a</span>
+            <span>n</span>
+            <span>k</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <h3> 王爆 </h3>
+                    <p>test</p>
+                    <a href="#" class="btn">boom now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sayings">
+        <h1 class="heading">
+            <span>s</span>
+            <span>a</span>
+            <span>y</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+            <div class="box">
+                <h3>test </h3>
+                <p>test</p>
+            </div>
+        </div>
+    </section>
+    <section class="galas">
+        <h1 class="heading">
+            <span>g</span>
+            <span>a</span>
+            <span>l</span>
+            <span>a</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="#.jpg" alt="">
+                <div class="content">
+                    <h3>test</h3>
+                    <p>test</p>
+                    <a href="#" class="btn">test</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="#.jpg" alt="">
+                <div class="content">
+                    <h3>test</h3>
+                    <p>test</p>
+                    <a href="#" class="btn">test</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="#.jpg" alt="">
+                <div class="content">
+                    <h3>test</h3>
+                    <p>test</p>
+                    <a href="#" class="btn">test</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="#.jpg" alt="">
+                <div class="content">
+                    <h3>test</h3>
+                    <p>test</p>
+                    <a href="#" class="btn">test</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>test</h3>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+            </div>
+            <div class="box">
+                <h3>test</h3>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+            </div>
+            <div class="box">
+                <h3>test</h3>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+                <a href="#">test</a>
+            </div>
+        </div>
+        <h1 class="credit"> created by <span> mr.Wangbao </span> | a gas tank </h1>
+    </section>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- custom js file link  -->
+    <script src="jscript.js"></script>
+
+    <script>
+        let formClose = document.querySelector('#form-close');
+        let menu = document.querySelector('#menu-bar');
+        let navbar = document.querySelector('.navbar');
+        let videoBtn = document.querySelectorAll('.vid-btn');
+        
+        window.onscroll = () =>{
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+        
+        menu.addEventListener('click', () =>{
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        });
+        
+        videoBtn.forEach(btn =>{
+            btn.addEventListener('click', ()=>{
+                document.querySelector('.controls .active').classList.remove('active');
+                btn.classList.add('active');
+                let src = btn.getAttribute('data-src');
+                document.querySelector('#video-slider').src = src;
+            });
+        });
+              
+        
+    </script>
+
+</body>
+
+</html>
